@@ -14,7 +14,7 @@
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-	
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdint.h>
@@ -63,7 +63,7 @@ static int pinToMuxAddr[NUM_PINS] = { 0, 0, 0, 0, 4, 4, 4, 4 };
 // Single
 // static int pinToMuxAddr[NUM_PINS] = { 0, 0, 0, 0, 48, 48, 48, 48 };
 
-static int pinToGPIOAddr[NUM_PINS] = { 
+static int pinToGPIOAddr[NUM_PINS] = {
 	0xa4000, 0xa4000, 0xa4000, 0xa4000, // GPIO 0, 1, 2, 3 --> GPIO3_DR
 	0xb4000, 0xb4000, // GPIO 4, 5 --> GPIO7_DR
 	0xa4000, // GPIO 6 --> GPIO3_DR
@@ -201,7 +201,7 @@ int wiringHBISR(int pin, int mode) {
 		wiringHBGC();
 	}
 
-	fprintf(f, "in\n");
+	fprintf(f, "in");
 	fclose(f);
 
 	sprintf(path, "/sys/class/gpio/gpio%d/edge", pinsToGPIO[pin]);
