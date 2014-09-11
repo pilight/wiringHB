@@ -80,7 +80,7 @@ static void changeOwner(char *file) {
 		if(errno == ENOENT)	{
 			fprintf(stderr, "wiringHB: File not present: %s\n", file);
 		} else {
-			fprintf(stderr, "wiringHB: Unable to change ownership of %s: %s\n", file, strerror (errno));
+			fprintf(stderr, "wiringHB: Unable to change ownership of %s: %s\n", file, strerror(errno));
 			error = 1;
 			wiringHBGC();
 		}
