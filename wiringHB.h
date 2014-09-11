@@ -34,7 +34,7 @@
 	#define OUTPUT		1
 #endif
 
-#define SYS			-1
+#define SYS			7
 
 #ifndef INT_EDGE_SETUP
 	#define	INT_EDGE_SETUP		0
