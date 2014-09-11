@@ -16,7 +16,7 @@ set(CMAKE_SHARED_LINKER_FLAGS " -Wl,-rpath=/usr/local/lib/,-rpath=/usr/lib/,-rpa
 set(CMAKE_MODULE_LINKER_FLAGS " -Wl,-rpath=/usr/local/lib/,-rpath=/usr/lib/,-rpath=/lib/")
 
 set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE armhf)
-set(CMAKE_C_FLAGS "-Ofast -fPIC -mfloat-abi=hard -mfpu=vfp -march=armv7-a -ffast-math -Wno-sign-conversion -Wfloat-equal -Wshadow -Wcast-align -Wstrict-overflow=5 -Wwrite-strings -Waggregate-return -Wswitch-default -Wswitch-enum -Wformat=2 -g -Wconversion -Wunreachable-code -Wstrict-prototypes")
+set(CMAKE_C_FLAGS "-Ofast -fPIC -mfloat-abi=hard -mfpu=vfp -march=armv7-a -ffast-math -Wno-sign-conversion -Wfloat-equal -Wshadow -Wcast-align -Wstrict-overflow=5 -Wwrite-strings -Waggregate-return -Wswitch-default -Wswitch-enum -Wformat=2 -g -Wunreachable-code -Wstrict-prototypes")
 
 # Start uninstaller generator
 function(WRITE_UNINSTALL_TARGET_SCRIPT)

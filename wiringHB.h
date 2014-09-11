@@ -59,5 +59,12 @@ int digitalRead(int pin);
 int wiringHBISR(int pin, int mode);
 int waitForInterrupt(int pin, int mS);
 void wiringHBGC(void);
+int wiringHBI2CRead(int fd);
+int wiringHBI2CReadReg8(int fd, int reg);
+int wiringHBI2CReadReg16(int fd, int reg);
+int wiringHBI2CWrite(int fd, int data);
+int wiringHBI2CWriteReg8(int fd, int reg, int data);
+int wiringHBI2CWriteReg16(int fd, int reg, int data);
+int wiringHBI2CSetup(int devId);
 
 #endif

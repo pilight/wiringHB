@@ -29,6 +29,7 @@
 #include <signal.h>
 #include <setjmp.h>
 
+#include "i2c-dev.h"
 #include "wiringHB.h"
 
 // Chapter 4, table 4.1 Pin Assignments
@@ -267,6 +268,50 @@ int waitForInterrupt(int pin, int mS) {
 	lseek(sysFds[pin], 0, SEEK_SET);
 
 	return x;
+}
+
+
+int wiringHBI2CRead(int fd) {
+	return i2c_smbus_read_byte(fd);
+}
+
+int wiringHBI2CReadReg8(int fd, int reg) {
+	return i2c_smbus_read_byte_data(fd, reg);
+}
+
+int wiringHBI2CReadReg16(int fd, int reg) {
+	return i2c_smbus_read_word_data(fd, reg);
+}
+
+int wiringHBI2CWrite(int fd, int data) {
+	return i2c_smbus_write_byte(fd, data);
+}
+
+int wiringHBI2CWriteReg8(int fd, int reg, int data) {
+	return i2c_smbus_write_byte_data(fd, reg, data);
+}
+
+int wiringHBI2CWriteReg16(int fd, int reg, int data) {
+	return i2c_smbus_write_word_data(fd, reg, data);
+}
+
+int wiringHBI2CSetup(int devId) {
+	int fd = 0;
+	const char *device = NULL;
+
+	device = "/dev/i2c-0";
+
+	if((fd = open(device, O_RDWR)) < 0) {
+		fprintf(stderr, "wiringHB: Unable to open %s: %s\n", device, strerror(errno));
+		return -1;
+	}
+
+	if(ioctl(fd, I2C_SLAVE, devId) < 0) {
+		fprintf(stderr, "wiringHB: Unable to set %s to slave mode: %s\n", device, strerror(errno));
+		return -1;
+	}
+
+	return fd;
 }
 
 void wiringHBGC(void) {
